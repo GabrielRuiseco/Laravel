@@ -18,15 +18,21 @@ class PruebaController extends Controller
             ["nombre" => "Elena", "ap_paterno" => "Prieto", "ap_materno" => "Goitia", "sexo" => "Femenino", "edad" => 18],
             ["nombre" => "Mariana", "ap_paterno" => "Gallegos", "ap_materno" => "Perez", "sexo" => "Feminino", "edad" => 22],
             ["nombre" => "Carlos", "ap_paterno" => "Rodriguez", "ap_materno" => "Orosco", "sexo" => "Masculino", "edad" => 25],
-            ["nombre" => "Paola", "ap_paterno" => "Rojas", "ap_materno" => "Hernandez", "sexo" => "Femenino", "edad" => 23]];
+            ["nombre" => "Paola", "ap_paterno" => "Rojas", "ap_materno" => "Hernandez", "sexo" => "Femenino", "edad" => 23],
+            ["nombre" => "Rodrigo", "ap_paterno" => "Valles", "ap_materno" => "Lopez", "sexo" => "Masculino", "edad" => 26]];
 
         return \view("Prueba.Prueba", ["nombre" => $nombre, "sexo" => $sexo, "color" => $color, "datos" => $datos, "letra" => $letra]);
     }
 
     public function info(Request $request)
     {
+        return view("info", ["nombre" => $request->nombre,
+            "ap_paterno" => $request->ap_paterno,
+            "ap_materno" => $request->ap_materno,
+            "sexo" => $request->sexo,
+            "edad" => $request->edad]);
 //        return $request->all();
-        return view("info", ["nombre" => $request->nombre, "ap_pat" => $request->ap_paterno, "ap_mat" => $request->ap_materno]);
+//        return view("info", ["nombre" => $request->nombre, "ap_pat" => $request->ap_paterno, "ap_mat" => $request->ap_materno]);
     }
 
     public function form()
@@ -36,7 +42,8 @@ class PruebaController extends Controller
             ["nombre" => "Elena", "ap_paterno" => "Prieto", "ap_materno" => "Goitia", "sexo" => "Femenino", "edad" => 18],
             ["nombre" => "Mariana", "ap_paterno" => "Gallegos", "ap_materno" => "Perez", "sexo" => "Feminino", "edad" => 22],
             ["nombre" => "Carlos", "ap_paterno" => "Rodriguez", "ap_materno" => "Orosco", "sexo" => "Masculino", "edad" => 25],
-            ["nombre" => "Paola", "ap_paterno" => "Rojas", "ap_materno" => "Hernandez", "sexo" => "Femenino", "edad" => 23]];
+            ["nombre" => "Paola", "ap_paterno" => "Rojas", "ap_materno" => "Hernandez", "sexo" => "Femenino", "edad" => 23],
+            ["nombre" => "Rodrigo", "ap_paterno" => "Valles", "ap_materno" => "Lopez", "sexo" => "Masculino", "edad" => 26]];
 
         return view("Formulario", ["datos" => json_encode($datos)]);
     }

@@ -1952,6 +1952,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["alumnos"],
   // mounted() {
@@ -1963,12 +1980,46 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      lista_alumnos: null
+      lista_alumnos: null,
+      alumno: {
+        nombre: "",
+        ap_paterno: "",
+        ap_materno: "",
+        edad: "",
+        sexo: ""
+      }
     };
   },
   methods: {
+    update: function update() {
+      alumno = {
+        nombre: this.state.nombre,
+        ap_paterno: this.state.ap_paterno,
+        ap_materno: this.state.ap_materno
+      };
+      axios.put('info', alumno).then(function (response) {
+        console.log(response.data());
+        self.push(response.data());
+      })["catch"](info, function (error) {
+        console.log(error);
+      });
+    },
+    Delete: function Delete() {
+      var self = this;
+      axios["delete"]("info").then(function (reponse) {
+        console.log(response.data()); // self.push(response.data());
+      })["catch"](info, function (error) {
+        console.log(error);
+      });
+    },
     Evento: function Evento() {
-      alert();
+      var self = this;
+      axios.post("info", this.alumno).then(function (response) {
+        console.log(response.data());
+        self.push(response.data());
+      })["catch"](info, function (error) {
+        console.log(error);
+      });
     }
   }
 });
@@ -37354,75 +37405,170 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.alumnos.nombre,
-                  expression: "alumnos.nombre"
-                }
-              ],
-              attrs: { type: "text", name: "nombre", id: "nombre" },
-              domProps: { value: _vm.alumnos.nombre },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+            _c("div", { staticClass: "form-group" }, [
+              _c("form", { staticClass: "input-group" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.alumno.nombre,
+                      expression: "alumno.nombre"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", name: "nombre", id: "nombre" },
+                  domProps: { value: _vm.alumno.nombre },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.alumno, "nombre", $event.target.value)
+                    }
                   }
-                  _vm.$set(_vm.alumnos, "nombre", $event.target.value)
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.alumnos.ap_paterno,
-                  expression: "alumnos.ap_paterno"
-                }
-              ],
-              attrs: { type: "text", name: "ap_paterno", id: "ap_paterno" },
-              domProps: { value: _vm.alumnos.ap_paterno },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+                }),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.alumno.ap_paterno,
+                      expression: "alumno.ap_paterno"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", name: "ap_paterno", id: "ap_paterno" },
+                  domProps: { value: _vm.alumno.ap_paterno },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.alumno, "ap_paterno", $event.target.value)
+                    }
                   }
-                  _vm.$set(_vm.alumnos, "ap_paterno", $event.target.value)
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.alumnos.ap_materno,
-                  expression: "alumnos.ap_materno"
-                }
-              ],
-              attrs: { type: "text", name: "ap_materno", id: "ap_materno" },
-              domProps: { value: _vm.alumnos.ap_materno },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+                }),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.alumno.ap_materno,
+                      expression: "alumno.ap_materno"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", name: "ap_materno", id: "ap_materno" },
+                  domProps: { value: _vm.alumno.ap_materno },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.alumno, "ap_materno", $event.target.value)
+                    }
                   }
-                  _vm.$set(_vm.alumnos, "ap_materno", $event.target.value)
-                }
-              }
-            }),
+                }),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.alumno.sexo,
+                      expression: "alumno.sexo"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", name: "sexo", id: "sexo" },
+                  domProps: { value: _vm.alumno.sexo },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.alumno, "sexo", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.alumno.edad,
+                      expression: "alumno.edad"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", name: "edad", id: "edad" },
+                  domProps: { value: _vm.alumno.edad },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.alumno, "edad", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: { type: "button", value: "Enviar" },
+                on: { click: _vm.Evento }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: { type: "button", value: "Update" },
+                on: { click: _vm.update }
+              })
+            ]),
             _vm._v(" "),
-            _c("input", {
-              attrs: { type: "button", value: "Enviar" },
-              on: { click: _vm.Evento }
-            }),
-            _vm._v(
-              "\n                    Componente Ejemplo de vue\n                "
+            _c(
+              "div",
+              { staticClass: "col" },
+              _vm._l(_vm.lista_alumnos, function(alumno) {
+                return _c("ul", { key: alumno.id, staticClass: "list-group" }, [
+                  _c(
+                    "li",
+                    {
+                      staticClass:
+                        "list-group-item d-flex justify-content-between align-items-center"
+                    },
+                    [
+                      _vm._v(
+                        "\n                                " +
+                          _vm._s(alumno.nombre) +
+                          " " +
+                          _vm._s(alumno.ap_paterno) +
+                          " " +
+                          _vm._s(alumno.ap_materno) +
+                          ": " +
+                          _vm._s(alumno.sexo) +
+                          "\n                                "
+                      ),
+                      _c(
+                        "span",
+                        { staticClass: "badge badge-primary badge-pill" },
+                        [_vm._v(_vm._s(alumno.edad))]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        attrs: { type: "button", value: "Delete" },
+                        on: { click: _vm.Delete }
+                      })
+                    ]
+                  )
+                ])
+              }),
+              0
             )
           ])
         ])
